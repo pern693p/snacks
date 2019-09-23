@@ -36,18 +36,17 @@ function post() {
         price: 25,
         rating: 6
     };
-
-
 const postData = JSON.stringify(data); 
 
 fetch("https://frontend2019-b484.restdb.io/rest/snacks", {
-        method: "post", 
-        headers: {
-            "Content-Type": "application/json; charset=uft-8", 
-            "x-apikey": "5d8895e0fd86cb75861e2639", 
-            "cache-control": "no-cache"
-
-        }, body: postData})
+    method: "post",
+  headers: {
+    "Content-Type": "application/json; charset=utf-8",
+    "x-apikey": "5d8895e0fd86cb75861e2639",
+    "cache-control": "no-cache"
+  },
+  body: postData       
+})
 
         .then(res => res.json())
         .then(data => {
@@ -59,7 +58,14 @@ fetch("https://frontend2019-b484.restdb.io/rest/snacks", {
 }
 
 function addSnacktoTheDOM(snack){
-    const template = document.querySelector() 
+
+
+    const template = document.querySelector("template").content; 
+    const copy = template.cloneNode(true); 
+    copy.querySelector("h1").textContent = snack.name;
+    copy.querySelector("h2").textContent = snack.taste;  
+    copy.querySelector("p").textContent = snack.price;  
+    copy.querySelector(".rating").textContent = snack.rating;    
 } 
 
 
